@@ -2,14 +2,14 @@
 #'
 #' @description Plots the prevalence of politeness features in documents, divided by a binary covariate.
 #' @param df_polite a data.frame with politeness features calculated from a document set, as output by \code{\link{politeness}}.
-#' @param split a vector with exactly two unique values. must have a length equal to the number of documents included in \code{df_polite}.
+#' @param split a vector of covariate values. must have a length equal to the number of documents included in \code{df_polite}.
 #' @param split_levels character vector of length 2 default NULL. Labels for covariate levels for legend. If NULL, this will be inferred from \code{split}.
 #' @param split_name character default NULL. Name of the covariate for legend.
 #' @param split_cols character vector of length 2. Name of colors to use.
 #' @param top_title character default "". Title of plot.
 #' @param drop_blank Features less prevalent than this in the sample value are excluded from the plot. To include all features, set to \code{0}
 #' @param middle_out Features less distinctive than this value (measured by p-value of t-test) are excluded. Defaults to 1 (i.e. include all).
-#' @details Length of \code{split} must be the same as number of rows of \code{df_polite}.
+#' @details Length of \code{split} must be the same as number of rows of \code{df_polite}. Typically \code{split} should be a two-category variable. However, if a continuous covariate is given, then the top and bottom terciles of that distribution are treated as the two categories (while dropping data from the middle tercile).
 #' @return a ggplot of the prevalence of politeness features, conditional on \code{split}. Features are sorted by variance-weighted log odds ratio.
 #' @examples
 #'
@@ -44,8 +44,25 @@ politenessPlot<-function(df_polite,
                          middle_out = 0.5){
 
   # confirm that split only has two values
-  if( length(unique(split)) !=2){
-    stop("split must have exactly 2 unique values")
+  if( length(unique(split)) > 2){
+    # if split has more than 2 values transform it into a binary variable by taking the top 33% and top 33%
+    # if the cut at 33% and 67% is the same we through an error
+    cuts <- stats::quantile(split, c(1/3, 2/3))
+    cut_low <- cuts[1]
+    cut_high <- cuts[2]
+
+    if(cut_low == cut_high){
+      stop("Cannot convert split into binary variable 33% and 67% percentiles are some value")
+    }
+
+    split <- ifelse(split <= cut_low,0,
+                    ifelse(split>=cut_high,1, NA_integer_))
+
+    df_polite <- df_polite[!is.na(split),]
+    split <- split[!is.na(split)]
+    warning("Converting split into binary variable by taking bottom and top 33% of values
+            removing middle 33% of values in df_polite and split.")
+
   }
   if( length(split) != nrow(df_polite)){
     stop("split must be same length as document set")
