@@ -1,3 +1,4 @@
+
 #' Politeness plot
 #'
 #' @description Plots the prevalence of politeness features in documents, divided by a binary covariate.
@@ -60,8 +61,8 @@ politenessPlot<-function(df_polite,
 
     df_polite <- df_polite[!is.na(split),]
     split <- split[!is.na(split)]
-    warning("Converting split into binary variable by taking bottom and top 33% of values
-            removing middle 33% of values in df_polite and split.")
+    warning("Converting split into binary variable by taking bottom and top 33% of values,
+            and removing middle 33% of values in df_polite and split.")
 
   }
   if( length(split) != nrow(df_polite)){
@@ -71,7 +72,7 @@ politenessPlot<-function(df_polite,
   binary <- setequal(unique(unlist(df_polite)),0:1)
 
   num_features <- ncol(df_polite)
-  l_polite_split <- split(df_polite, split)
+  l_polite_split <- split(data.frame(df_polite), split)
 
   if(is.null(split_levels)){
     split_levels <- names(l_polite_split)
@@ -95,6 +96,9 @@ politenessPlot<-function(df_polite,
     split.enough<-names(df_polite)[(split.p<middle_out)&(!is.na(split.p))]
   }
 
+  if(sum((split.data$feature%in%nonblanks)&(split.data$feature%in%split.enough))==0){
+    stop("All features were excluded. Adjust exclusion settings.")
+  }
   split.data<-split.data[(split.data$feature%in%nonblanks)&(split.data$feature%in%split.enough),]
   ######################################################
   if(binary){
