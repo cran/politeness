@@ -1,4 +1,4 @@
-52289d292b7d9883aee64e971141aa54 *DESCRIPTION
+e3b99ea2c7ce0b5f2413be98112ecaf5 *DESCRIPTION
 ee098be2a03dc96c628037d6ffb3d8e8 *LICENSE
 d6a39276f45148e52c6bb972f020fa8b *NAMESPACE
 2461e9a74444f374398990639b7b6470 *R/data.R
@@ -6,8 +6,8 @@ d6a39276f45148e52c6bb972f020fa8b *NAMESPACE
 fd05452fc6f2104f683c616d9c3c88ab *R/findPoliteTexts.R
 657e643a28f2b7b1bc37ae5cc28f933a *R/math.R
 03a669e1600237aa6ad51d5e0486be70 *R/politeness.R
-4f0322942c15cd7c25de5a5f53f3f8ca *R/politenessPlot.R
-63ce742218c8a7663089a9c150c8a380 *R/politenessProjection.R
+88ca258073dea92ee1f202713fbc3d83 *R/politenessPlot.R
+56c05bda57100ee542b2e40b63dad888 *R/politenessProjection.R
 4d767eedc84ea0dcc81d45b82261f416 *R/posTools.R
 bba4b0dae4c4467d1e0ff5236d2849cc *R/sysdata.rda
 5d9fd918a5f1f316b9036ed6eddaedcb *R/textTools.R
@@ -19,7 +19,7 @@ f0c0623e8c0fa0592a7fc693f5956136 *data/bowl_offers.rdata
 520722103e2f58af7b6be1200ceb9d24 *data/phone_offers.rdata
 5f60e3decc064617dee7338a4f989867 *inst/doc/politeness.R
 d2836fb4f45d52eb6ac8d0a6464a95c5 *inst/doc/politeness.Rmd
-e4ef3cdbff2644e3c1074960a836d5ec *inst/doc/politeness.html
+51c43390cbdb3489d8b72442a1aafdd2 *inst/doc/politeness.html
 add762c622a6a649357c9a51d89ebc89 *man/bowl_offers.Rd
 89bb25acd5933c41ba2418bada4fde0d *man/cleantext.Rd
 a86efc0f25b97347f57a68ec2334593b *man/ctxpand.Rd
@@ -31,7 +31,7 @@ a064997811f31f9b0b3f4e15885e0a64 *man/dictWrap.Rd
 7c95872dc89fe928712de3b38c717771 *man/phone_offers.Rd
 b4ad401af6bc8c4768b1b7ee5e37f8c5 *man/polite_dicts.Rd
 480a9e388a460fc4ec555852fb281f7e *man/politeness.Rd
-7fd8ed7b79f15e0398e6abdbb63a2817 *man/politenessPlot.Rd
+bd17862134eb91c72afe84e08e3ce411 *man/politenessPlot.Rd
 6e93b6df5d65fa41188ede5d40d1a23f *man/politenessProjection.Rd
 b35b4ced597385e9244884bd00ba7ec1 *man/positive_list.Rd
 40fdde293f5b5a89ffa5caafc2fbbae7 *man/slogodds.Rd
