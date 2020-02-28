@@ -1,4 +1,4 @@
-82b756dd9ea63801e4fc8ab2adfdc4f8 *DESCRIPTION
+575a052205ccb56365a862b82fb66f62 *DESCRIPTION
 ee098be2a03dc96c628037d6ffb3d8e8 *LICENSE
 9a7003da9afbd3443fb37440df6da716 *NAMESPACE
 9cdb053b20222d0df0f3269488c5e79d *R/data.R
@@ -18,10 +18,10 @@ f48ae0119f8ab9e3f2aa011539c86cb7 *build/vignette.rds
 f0c0623e8c0fa0592a7fc693f5956136 *data/bowl_offers.rdata
 95ff416335a37609668cbd5cd508f23d *data/feature_table.rdata
 520722103e2f58af7b6be1200ceb9d24 *data/phone_offers.rdata
-28d46de527250117304b37939a494ef8 *data/receptTrain.rdata
+40503863e9fd10a3f4a2468e97765500 *data/receptTrain.rdata
 d8e83aeb03984aa4953b3c049e93e6f5 *inst/doc/politeness.R
 7370949e9058b810168aebf3a1b02e2e *inst/doc/politeness.Rmd
-0f335f445376e0886c389ce4550ff592 *inst/doc/politeness.html
+22cd05564343f11253b914bdad9f60e4 *inst/doc/politeness.html
 d27d7a81a3edb85c8d7b8fa18a435762 *man/bowl_offers.Rd
 89bb25acd5933c41ba2418bada4fde0d *man/cleantext.Rd
 a86efc0f25b97347f57a68ec2334593b *man/ctxpand.Rd
@@ -45,5 +45,6 @@ c1eae10f17f4c28a4647954650c8d21e *tests/testthat.R
 c5973eccabd89806189ae36bfbbf630f *tests/testthat/test-findPoliteTexts.R
 4d45aa113ea8deb5431c7c7a4b7d5980 *tests/testthat/test-politeness.R
 36e24bafd88417e6444c76a90f4c6549 *tests/testthat/test-politenessPlot.R
+68ef5940d0fca9ff95a33fc061e7fc73 *tests/testthat/test-receptiveness.R
 1b66116142a59bc4b27c987ae6350e8e *vignettes/executionTime.png
 7370949e9058b810168aebf3a1b02e2e *vignettes/politeness.Rmd
