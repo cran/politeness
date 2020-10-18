@@ -5,7 +5,7 @@
 #' @param text character A vector of texts, each of which will be tallied for politeness features.
 #' @param parser character Name of dependency parser to use (see details). Without a dependency parser, some features will be approximated, while others cannot be calculated at all.
 #' @param metric character What metric to return? Raw feature count totals, Binary presence/absence of features, or feature counts per word  Default is "count".
-#' @param drop_blank logical Should features that were not found in any text be removed from the data.frame? Default is TRUE
+#' @param drop_blank logical Should features that were not found in any text be removed from the data.frame? Default is FALSE
 #' @param num_mc_cores integer Number of cores for parallelization. Default is 1, but we encourage users to try parallel::detectCores() if possible.
 #' @details Some politeness features depend on part-of-speech tagged sentences (e.g. "bare commands" are a particular verb class).
 #'     To include these features in the analysis, a POS tagger must be initialized beforehand - we currently support SpaCy which must
@@ -46,7 +46,8 @@
 #'
 #'@export
 
-politeness<-function(text, parser=c("none","spacy"), metric=c("count","binary","average"), drop_blank=TRUE, num_mc_cores=1){
+politeness<-function(text, parser=c("none","spacy"), metric=c("count","binary","average"), drop_blank=FALSE, num_mc_cores=1){
+  text<-unlist(text)
   ########################################################
   # Generates broad token lists for feature creation below
   if(length(text)<2000){
@@ -92,9 +93,9 @@ politeness<-function(text, parser=c("none","spacy"), metric=c("count","binary","
   features[["Reasoning"]]<-textcounter(c("reason", "why i", "why we", "explain", "caused","because"),sets[["clean"]],
                                        num_mc_cores=num_mc_cores)
   features[["Reassurance"]]<-textcounter(c("is okay", "not worry", "no big deal", "not a big deal", "no problem",
-                                           "no worries", "is fine", "you are good", "is fine", "is okay") ,sets[["clean"]],
+                                           "no worries", "is fine", "you are good", "it's fine", "it's okay") ,sets[["clean"]],
                                          num_mc_cores=num_mc_cores)
-  features[["Ask.Agency"]]<-textcounter(c("do me a favor", "let me", "allow me", "can i", "should i",
+  features[["Ask.Agency"]]<-textcounter(c("do me a favor", "do me a favour", "let me", "allow me", "can i", "should i",
                                           "may i", "might i", "could i"),sets[["clean"]],
                                         num_mc_cores=num_mc_cores)
   features[["Give.Agency"]]<-textcounter(c("let you", "allow you", "you can", "you may", "you could"),sets[["clean"]],
@@ -163,7 +164,7 @@ politeness<-function(text, parser=c("none","spacy"), metric=c("count","binary","
                                 unlist(lapply(sets[["p.nonum"]], function(x) sum(grepl("(appreciate, i)",x,fixed=TRUE)))))
     features[["Apology"]]<-(textcounter(c("sorry"," woops","oops","whoops"),sets[["c.words"]],words=TRUE,
                                         num_mc_cores=num_mc_cores)
-                            +textcounter(c("dobj(excuse, me)","nsubj(apologize, i)","dobj(forgive, me)"),sets[["p.nonum"]], words=TRUE,
+                            +textcounter(c("dobj(excuse, me)","nsubj(apologize, i)","nsubj(apologise, i)","dobj(forgive, me)"),sets[["p.nonum"]], words=TRUE,
                                          num_mc_cores=num_mc_cores))
     features[["Truth.Intensifier"]]<-(textcounter(c("really", "actually", "honestly", "surely"),sets[["c.words"]],words=TRUE,
                                                   num_mc_cores=num_mc_cores)
@@ -188,7 +189,7 @@ politeness<-function(text, parser=c("none","spacy"), metric=c("count","binary","
   feature.data<-as.data.frame(features)
   feature.data[feature.data<0]<-0
   if(drop_blank){
-    feature.data<-feature.data[,colMeans(feature.data,na.rm=T)!=0, drop=FALSE]
+    feature.data<-feature.data[,colMeans(feature.data,na.rm=TRUE)!=0, drop=FALSE]
   }
   return(feature.data)
 }
