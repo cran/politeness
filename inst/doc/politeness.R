@@ -44,9 +44,9 @@ politeness::politenessPlot(df_politeness,
 
 ## ---- echo=TRUE, eval=TRUE----------------------------------------------------
 
-df_polite_train <- politeness(phone_offers$message, drop_blank=FALSE)
+df_polite_train <- politeness(phone_offers$message)
 
-df_polite_holdout<-politeness(bowl_offers$message, drop_blank=FALSE)
+df_polite_holdout<-politeness(bowl_offers$message)
 
 project<-politenessProjection(df_polite_train,
                               phone_offers$condition,

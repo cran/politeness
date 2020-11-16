@@ -18,7 +18,7 @@
 #'
 #' Hedges
 #'
-#' @format A list of 99 hedging words.
+#' @format A list of 72 hedging words.
 #'
 "hedge_list"
 
@@ -73,20 +73,31 @@
 
 
 
-#' Pre-Trained Receptivness Model
+#' Pre-Trained Receptiveness Data
 #'
-#' A pre-trained model for detecting conversational receptiveness.
-#' Estimated with glmnet using annotated data from an previous paper.
+#' A dataset to train a model for detecting conversational receptiveness.
+#' @format A data frame with 543 rows and 2 variables:
+#' \describe{
+#'   \item{text}{character written response about policy disagreement}
+#'   \item{receptive}{numeric average of annotator ratings for "receptiveness"}
+#' }
 #' Primarily for use within the receptiveness() function.
-#'
-#' @format A fitted glmnet model
-#' @source  Yeomans, M., Minson, J., Collins, H., Chen, F. & Gino, F. (working paper).
+#' @source  Yeomans, M., Minson, J., Collins, H., Chen, F. & Gino, F. (2020).
 #'
 #' "Conversational Receptiveness: Improving Engagement with Opposing Views"
 #'
 #' Study 1. \url{https://osf.io/2n59b/}
 #'
 #'
-"receptive_model"
+"receptive_train"
 
+
+#' UK to US Conversion dictionary
+#'
+#' For internal use only. This dataset contains a quanteda dictionary for converting UK words to US words. The models in this package were all trained on US English.
+#'
+#' @format A quanteda dictionary with named entries. Names are the US version, and entries are the UK version.
+#' @source Borrowed from the quanteda.dictionaries package on github (from user kbenoit)
+#'
+"uk2us"
 
