@@ -1,10 +1,10 @@
-7c425d4cbd9b2935002bb810f335c722 *DESCRIPTION
+0ca1187a67945feea305028980d89ac9 *DESCRIPTION
 ee098be2a03dc96c628037d6ffb3d8e8 *LICENSE
 9a7003da9afbd3443fb37440df6da716 *NAMESPACE
 8a4a6e95bacd3db1a398b5f4565419c2 *R/data.R
 51639db52a5d033ddee8b2d54e6924b1 *R/dictTools.R
 fd05452fc6f2104f683c616d9c3c88ab *R/findPoliteTexts.R
-710fc37c301d2d5b1befdb21acc90b02 *R/getTokenSets.R
+1dd512a127482cb2a6d4cac403182ccd *R/getTokenSets.R
 2e379b2efc6aa439df7a804a941ffe8b *R/math.R
 a46e346842c5f7c55ba7e48a3fcd0faf *R/politeness.R
 27f6cf1eb0b86090addf3e6594139817 *R/politenessPlot.R
@@ -12,7 +12,7 @@ a46e346842c5f7c55ba7e48a3fcd0faf *R/politeness.R
 4d767eedc84ea0dcc81d45b82261f416 *R/posTools.R
 02a15af8b11f075615b1125f30e1dfbc *R/receptiveness.R
 37e83ea6554d7857cfd717c947d3df87 *R/sysdata.rda
-e5ba19e2f9a378cae34e687f56c2e9ec *R/textTools.R
+3ba565afc08ec46bf2f696e4dc20fef7 *R/textTools.R
 d8e17bc8f14c0ffa97ede4adb0035d71 *R/zzz.R
 600bf36abe3da2f3483e1e88d4d13137 *README.md
 5978e66ad942e513e96e83529b4c8c8f *build/vignette.rds
@@ -23,8 +23,9 @@ cbb5cc04fec7697c5636ed0ec88ef5c4 *data/feature_table.rdata
 62a936f0dff0a21718d9e78326e3d89a *data/uk2us.rda
 1f38356eb4fe94a18eb54d6c95704df8 *inst/doc/politeness.R
 34c14988977479247aa6fc75d3596f0b *inst/doc/politeness.Rmd
-ea7d9977dd56a496bab4b83a8778292d *inst/doc/politeness.html
+67adf1af57415f490a1513736228d748 *inst/doc/politeness.html
 3ae218fedafda17ab61933113b872839 *man/bowl_offers.Rd
+f46c2795dbb282fc6c942bf276ab4724 *man/cleanpunct.Rd
 89bb25acd5933c41ba2418bada4fde0d *man/cleantext.Rd
 a86efc0f25b97347f57a68ec2334593b *man/ctxpand.Rd
 e68540ea2de1ccd440a3e1c3e3079002 *man/dictWrap.Rd
