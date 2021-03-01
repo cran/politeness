@@ -1,4 +1,4 @@
-0ca1187a67945feea305028980d89ac9 *DESCRIPTION
+3630d9bbd6b1ff86b627be23a085a5df *DESCRIPTION
 ee098be2a03dc96c628037d6ffb3d8e8 *LICENSE
 9a7003da9afbd3443fb37440df6da716 *NAMESPACE
 8a4a6e95bacd3db1a398b5f4565419c2 *R/data.R
@@ -6,7 +6,7 @@ ee098be2a03dc96c628037d6ffb3d8e8 *LICENSE
 fd05452fc6f2104f683c616d9c3c88ab *R/findPoliteTexts.R
 1dd512a127482cb2a6d4cac403182ccd *R/getTokenSets.R
 2e379b2efc6aa439df7a804a941ffe8b *R/math.R
-a46e346842c5f7c55ba7e48a3fcd0faf *R/politeness.R
+53de6d1b208eff43b18a756dbba3e2db *R/politeness.R
 27f6cf1eb0b86090addf3e6594139817 *R/politenessPlot.R
 4498a1f53fda81e975b941d805599a18 *R/politenessProjection.R
 4d767eedc84ea0dcc81d45b82261f416 *R/posTools.R
@@ -23,7 +23,7 @@ cbb5cc04fec7697c5636ed0ec88ef5c4 *data/feature_table.rdata
 62a936f0dff0a21718d9e78326e3d89a *data/uk2us.rda
 1f38356eb4fe94a18eb54d6c95704df8 *inst/doc/politeness.R
 34c14988977479247aa6fc75d3596f0b *inst/doc/politeness.Rmd
-67adf1af57415f490a1513736228d748 *inst/doc/politeness.html
+75bdc92203439ed389b53e53acc4fe72 *inst/doc/politeness.html
 3ae218fedafda17ab61933113b872839 *man/bowl_offers.Rd
 f46c2795dbb282fc6c942bf276ab4724 *man/cleanpunct.Rd
 89bb25acd5933c41ba2418bada4fde0d *man/cleantext.Rd
