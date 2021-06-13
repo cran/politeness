@@ -46,6 +46,7 @@ cleantext<-function (text, language = "english", stop.words = TRUE) {
   }
   text <- tm::removeNumbers(text)
   text <- tm::stripWhitespace(text)
+  text <- paste0(" ",text," ")
   return(as.character(text))
 }
 
@@ -84,6 +85,7 @@ usWords<-function(text){
   tokUS<-quanteda::tokens_lookup(toks, politeness::uk2us,
                                  exclusive = FALSE,capkeys = FALSE)
   sentUS<-unlist(lapply(tokUS,paste, collapse=" "),use.names = F)
+  return(sentUS)
 }
 
 #' Cleaning weird encodings
@@ -92,7 +94,7 @@ usWords<-function(text){
 #' @return character Vector of clean strings.
 #' @keywords internal
 cleanpunct<-function(text){
-  # text<- gsub("‘", "'",text)
+  # text<-gsub("‘", "'",text)
   # text<-gsub("’", "'", text)
   # text<-gsub("“", '"', text)
   # text<-gsub("”", '"', text)
@@ -103,4 +105,3 @@ cleanpunct<-function(text){
   text<-stringi::stri_trans_general(text, "latin-ascii")
   return(text)
 }
-
