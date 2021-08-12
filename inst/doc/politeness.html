@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 
-<meta name="date" content="2021-06-13" />
+<meta name="date" content="2021-08-12" />
 
 <title>Politeness</title>
 
@@ -140,7 +140,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <h1 class="title toc-ignore">Politeness</h1>
 <h3 class="subtitle">Detecting Politeness Features in Text</h3>
-<h4 class="date">2021-06-13</h4>
+<h4 class="date">2021-08-12</h4>
 
 
 
@@ -164,19 +164,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="politeness-features" class="section level2">
 <h2>Politeness Features</h2>
-<p>The main value of this package is in the <code>politeness</code> function, which counts the use of 36 different politeness features in natural language. Here, we borrow directly from existing research on the computational linguistics of politeness (Brown &amp; Levinson, 1987; Danescu-Niculescu-Mizil et al., 2013; Voigt et al., 2017). These features are summarized in the table below, along with examples of each.</p>
+<p>The main value of this package is in the <code>politeness</code> function, which counts the use of different politeness features in natural language. Here, we initially borrowed directly from existing research on the computational linguistics of politeness (Brown &amp; Levinson, 1987; Danescu-Niculescu-Mizil et al., 2013; Voigt et al., 2017). However, features have also been added and revised based on ongoing research (e.g. Acknowledgement, Subjectivity, Disagreement). These features are summarized in the table below, along with examples of each.</p>
 <table>
 <caption>Table 1: Politeness Features</caption>
 <colgroup>
-<col width="2%" />
-<col width="19%" />
+<col width="20%" />
 <col width="9%" />
-<col width="35%" />
+<col width="37%" />
 <col width="33%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th align="left"></th>
 <th align="center">Feature Name</th>
 <th align="center">POS Tags</th>
 <th align="center">Description</th>
@@ -185,270 +183,238 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">1</td>
-<td align="center">Hello</td>
-<td align="center">No</td>
-<td align="center">“hi”, “hello”, “hey”</td>
-<td align="center">“Hi, how are you today?”</td>
-</tr>
-<tr class="even">
-<td align="left">2</td>
-<td align="center">Goodbye</td>
-<td align="center">No</td>
-<td align="center">“goodbye”, “bye”, “see you later”</td>
-<td align="center">“That’s my best offer. Bye!”</td>
-</tr>
-<tr class="odd">
-<td align="left">4</td>
-<td align="center">Please</td>
-<td align="center">Both</td>
-<td align="center">Please mid-sentence</td>
-<td align="center">“Let me know if that works, please”</td>
-</tr>
-<tr class="even">
-<td align="left">5</td>
-<td align="center">Gratitude</td>
-<td align="center">Both</td>
-<td align="center">“thank you”, “i appreciate”, etc.</td>
-<td align="center">“Thanks for your interest”</td>
-</tr>
-<tr class="odd">
-<td align="left">6</td>
-<td align="center">Apologies</td>
-<td align="center">Both</td>
-<td align="center">“sorry”, “oops”, “excuse me”, etc.</td>
-<td align="center">“I’m sorry for being so blunt”</td>
-</tr>
-<tr class="even">
-<td align="left">7</td>
-<td align="center">Formal Title</td>
-<td align="center">No</td>
-<td align="center">“sir”, “madam”, “mister”, etc.</td>
-<td align="center">“Sir, that is quite an offer.”</td>
-</tr>
-<tr class="odd">
-<td align="left">8</td>
-<td align="center">Informal Title</td>
-<td align="center">No</td>
-<td align="center">“buddy”, “chief”, “boss”, etc.</td>
-<td align="center">“Dude, that is quite an offer.”</td>
-</tr>
-<tr class="even">
-<td align="left">9</td>
-<td align="center">Swearing</td>
-<td align="center">No</td>
-<td align="center">Vulgarity of all sorts</td>
-<td align="center">“The dang price is too high”</td>
-</tr>
-<tr class="odd">
-<td align="left">10</td>
-<td align="center">Could You</td>
-<td align="center">No</td>
-<td align="center">Indirect request</td>
-<td align="center">“Could you lower the price?”</td>
-</tr>
-<tr class="even">
-<td align="left">11</td>
-<td align="center">Can You</td>
-<td align="center">No</td>
-<td align="center">Direct request</td>
-<td align="center">“Can you lower the price?”</td>
-</tr>
-<tr class="odd">
-<td align="left">12</td>
-<td align="center">Bare Command</td>
-<td align="center">Yes</td>
-<td align="center">Unconjugated verb to start sentence</td>
-<td align="center">“Lower the price for me”</td>
-</tr>
-<tr class="even">
-<td align="left">13</td>
-<td align="center">Let Me Know</td>
-<td align="center">No</td>
-<td align="center">“let me know”</td>
-<td align="center">“Let me know if that works”</td>
-</tr>
-<tr class="odd">
-<td align="left">14</td>
-<td align="center">Affirmation</td>
-<td align="center">Yes</td>
-<td align="center">Short appreciation to start sentence</td>
-<td align="center">“Cool, that will work out then”</td>
-</tr>
-<tr class="even">
-<td align="left">15</td>
-<td align="center">Agreement</td>
-<td align="center">Yes</td>
-<td align="center">Explicit statement of agreement</td>
-<td align="center">“I mostly agree with that”</td>
-</tr>
-<tr class="odd">
-<td align="left">16</td>
 <td align="center">Acknowledgement</td>
 <td align="center">Yes</td>
 <td align="center">Explicit statement of understanding</td>
 <td align="center">“I understand your point”</td>
 </tr>
 <tr class="even">
-<td align="left">17</td>
+<td align="center">Adverb Limiter</td>
+<td align="center">Yes</td>
+<td align="center">Minimizing with “just”, “only”, simply&quot;</td>
+<td align="center">“It is just enough to be worth it”</td>
+</tr>
+<tr class="odd">
+<td align="center">Affirmation</td>
+<td align="center">Yes</td>
+<td align="center">Short appreciation to start sentence</td>
+<td align="center">“Cool, that will work out then”</td>
+</tr>
+<tr class="even">
+<td align="center">Agreement</td>
+<td align="center">Yes</td>
+<td align="center">Explicit statement of agreement</td>
+<td align="center">“I mostly agree with that”</td>
+</tr>
+<tr class="odd">
+<td align="center">Apology</td>
+<td align="center">Both</td>
+<td align="center">“sorry”, “oops”, “excuse me”, etc.</td>
+<td align="center">“I’m sorry for being so blunt”</td>
+</tr>
+<tr class="even">
+<td align="center">Ask Agency</td>
+<td align="center">No</td>
+<td align="center">Request an action for self</td>
+<td align="center">“Let me step back for a minute”</td>
+</tr>
+<tr class="odd">
+<td align="center">Bare Command</td>
+<td align="center">Yes</td>
+<td align="center">Unconjugated verb to start sentence</td>
+<td align="center">“Lower the price for me”</td>
+</tr>
+<tr class="even">
+<td align="center">By The Way</td>
+<td align="center">No</td>
+<td align="center">“by the way”</td>
+<td align="center">“By the way, my old offer stands”</td>
+</tr>
+<tr class="odd">
+<td align="center">Can You</td>
+<td align="center">No</td>
+<td align="center">Direct request</td>
+<td align="center">“Can you lower the price?”</td>
+</tr>
+<tr class="even">
 <td align="center">Conjunction Start</td>
 <td align="center">Yes</td>
 <td align="center">Begin sentence with conjunction</td>
 <td align="center">“And if that works for you”</td>
 </tr>
 <tr class="odd">
-<td align="left">18</td>
-<td align="center">Reasoning</td>
+<td align="center">Could You</td>
 <td align="center">No</td>
-<td align="center">Explicit reference to reasons</td>
-<td align="center">“I want to explain my offer price”</td>
+<td align="center">Indirect request</td>
+<td align="center">“Could you lower the price?”</td>
 </tr>
 <tr class="even">
-<td align="left">19</td>
-<td align="center">Resassurance</td>
-<td align="center">No</td>
-<td align="center">Minimizing other’s problems</td>
-<td align="center">“Don’t worry, we’re still on track”</td>
-</tr>
-<tr class="odd">
-<td align="left">20</td>
-<td align="center">Ask Agency</td>
-<td align="center">No</td>
-<td align="center">Request an action for self</td>
-<td align="center">“Let me step back for a minute”</td>
-</tr>
-<tr class="even">
-<td align="left">21</td>
-<td align="center">Give Agency</td>
-<td align="center">No</td>
-<td align="center">Suggest an action for other</td>
-<td align="center">“I want to let you come out ahead”</td>
-</tr>
-<tr class="odd">
-<td align="left">22</td>
-<td align="center">Hedges</td>
-<td align="center">No</td>
-<td align="center">Indicators of uncertainty</td>
-<td align="center">“I might take the deal”</td>
-</tr>
-<tr class="even">
-<td align="left">23</td>
-<td align="center">Truth Intensifier</td>
-<td align="center">Both</td>
-<td align="center">Indicators of certainty</td>
-<td align="center">“This is definitely a good idea.”</td>
-</tr>
-<tr class="odd">
-<td align="left">24</td>
-<td align="center">Positive</td>
-<td align="center">No</td>
-<td align="center">Positive emotion words</td>
-<td align="center">“that is a great deal”</td>
-</tr>
-<tr class="even">
-<td align="left">25</td>
-<td align="center">Negative</td>
-<td align="center">No</td>
-<td align="center">Negative emotion words</td>
-<td align="center">“that is a bad deal”</td>
-</tr>
-<tr class="odd">
-<td align="left">26</td>
-<td align="center">Negation</td>
-<td align="center">No</td>
-<td align="center">Contradiction words</td>
-<td align="center">“This cannot be your best offer”</td>
-</tr>
-<tr class="even">
-<td align="left">27</td>
-<td align="center">Questions</td>
-<td align="center">No</td>
-<td align="center">Question mark count</td>
-<td align="center">“Is this for real?”</td>
-</tr>
-<tr class="odd">
-<td align="left">28</td>
-<td align="center">WH Questions</td>
+<td align="center">Disagreement</td>
 <td align="center">Yes</td>
-<td align="center">Questions w/ WH words (how, why, etc)</td>
-<td align="center">“Why did you settle on that value?”</td>
-</tr>
-<tr class="even">
-<td align="left">29</td>
-<td align="center">YesNo Questions</td>
-<td align="center">Yes</td>
-<td align="center">Questions w/o WH words</td>
-<td align="center">“Is this for real?”</td>
+<td align="center">Explicit disagreement</td>
+<td align="center">“I don’t agree with that”</td>
 </tr>
 <tr class="odd">
-<td align="left">30</td>
-<td align="center">By The Way</td>
-<td align="center">No</td>
-<td align="center">“by the way”</td>
-<td align="center">“By the way, my old offer stands”</td>
-</tr>
-<tr class="even">
-<td align="left">31</td>
-<td align="center">Adverbial Just</td>
-<td align="center">Yes</td>
-<td align="center">modifying a quantity with “just”</td>
-<td align="center">“It is just enough to be worth it”</td>
-</tr>
-<tr class="odd">
-<td align="left">32</td>
 <td align="center">Filler Pause</td>
 <td align="center">No</td>
 <td align="center">Filler words and verbal pauses</td>
 <td align="center">“That would be, um, fine”</td>
 </tr>
 <tr class="even">
-<td align="left">33</td>
-<td align="center">For Me</td>
-<td align="center">No</td>
-<td align="center">“for me”</td>
-<td align="center">“It would be great for me”</td>
-</tr>
-<tr class="odd">
-<td align="left">34</td>
-<td align="center">For You</td>
-<td align="center">No</td>
-<td align="center">“for you”</td>
-<td align="center">“It would be great for you”</td>
-</tr>
-<tr class="even">
-<td align="left">35</td>
 <td align="center">First Person Plural</td>
 <td align="center">No</td>
 <td align="center">First-person plural pronouns</td>
 <td align="center">“it’s a good deal for both of us”</td>
 </tr>
 <tr class="odd">
-<td align="left">36</td>
 <td align="center">First Person Single</td>
-<td align="center">Both</td>
-<td align="center">First-person singular mid-sentence</td>
+<td align="center">No</td>
+<td align="center">First-person singular</td>
 <td align="center">“It would benefit me, as well”</td>
 </tr>
 <tr class="even">
-<td align="left">37</td>
-<td align="center">Second Person Single</td>
-<td align="center">Both</td>
-<td align="center">Second person mid-sentence</td>
-<td align="center">“It would benefit you, as well”</td>
+<td align="center">For Me</td>
+<td align="center">No</td>
+<td align="center">“for me”</td>
+<td align="center">“It would be great for me”</td>
 </tr>
 <tr class="odd">
-<td align="left">40</td>
+<td align="center">For You</td>
+<td align="center">No</td>
+<td align="center">“for you”</td>
+<td align="center">“It would be great for you”</td>
+</tr>
+<tr class="even">
+<td align="center">Formal Title</td>
+<td align="center">No</td>
+<td align="center">“sir”, “madam”, “mister”, etc.</td>
+<td align="center">“Sir, that is quite an offer.”</td>
+</tr>
+<tr class="odd">
+<td align="center">Give Agency</td>
+<td align="center">No</td>
+<td align="center">Suggest an action for other</td>
+<td align="center">“I want to let you come out ahead”</td>
+</tr>
+<tr class="even">
+<td align="center">Goodbye</td>
+<td align="center">No</td>
+<td align="center">“goodbye”, “bye”, “see you later”</td>
+<td align="center">“That’s my best offer. Bye!”</td>
+</tr>
+<tr class="odd">
+<td align="center">Gratitude</td>
+<td align="center">Both</td>
+<td align="center">“thank you”, “i appreciate”, etc.</td>
+<td align="center">“Thanks for your interest”</td>
+</tr>
+<tr class="even">
+<td align="center">Hedges</td>
+<td align="center">No</td>
+<td align="center">Indicators of uncertainty</td>
+<td align="center">“I might take the deal”</td>
+</tr>
+<tr class="odd">
+<td align="center">Hello</td>
+<td align="center">No</td>
+<td align="center">“hi”, “hello”, “hey”</td>
+<td align="center">“Hi, how are you today?”</td>
+</tr>
+<tr class="even">
 <td align="center">Impersonal Pronoun</td>
 <td align="center">No</td>
 <td align="center">Non-person referents</td>
 <td align="center">“That is a deal”</td>
 </tr>
+<tr class="odd">
+<td align="center">Informal Title</td>
+<td align="center">No</td>
+<td align="center">“buddy”, “chief”, “boss”, etc.</td>
+<td align="center">“Dude, that is quite an offer.”</td>
+</tr>
 <tr class="even">
-<td align="left">38</td>
+<td align="center">Let Me Know</td>
+<td align="center">No</td>
+<td align="center">“let me know”</td>
+<td align="center">“Let me know if that works”</td>
+</tr>
+<tr class="odd">
+<td align="center">Negation</td>
+<td align="center">No</td>
+<td align="center">Contradiction words</td>
+<td align="center">“This cannot be your best offer”</td>
+</tr>
+<tr class="even">
+<td align="center">Negative Emotion</td>
+<td align="center">No</td>
+<td align="center">Negative emotion words</td>
+<td align="center">“that is a bad deal”</td>
+</tr>
+<tr class="odd">
+<td align="center">Please</td>
+<td align="center">No</td>
+<td align="center">Expressing please</td>
+<td align="center">“Let me know if that works, please”</td>
+</tr>
+<tr class="even">
+<td align="center">Positive Emotion</td>
+<td align="center">No</td>
+<td align="center">Positive emotion words</td>
+<td align="center">“that is a great deal”</td>
+</tr>
+<tr class="odd">
+<td align="center">Questions</td>
+<td align="center">No only</td>
+<td align="center">Question mark count</td>
+<td align="center">“Is this for real?”</td>
+</tr>
+<tr class="even">
+<td align="center">Reasoning</td>
+<td align="center">No</td>
+<td align="center">Explicit reference to reasons</td>
+<td align="center">“I want to explain my offer price”</td>
+</tr>
+<tr class="odd">
+<td align="center">Resassurance</td>
+<td align="center">No</td>
+<td align="center">Minimizing other’s problems</td>
+<td align="center">“Don’t worry, we’re still on track”</td>
+</tr>
+<tr class="even">
+<td align="center">Second Person Single</td>
+<td align="center">No</td>
+<td align="center">Second person pronoun</td>
+<td align="center">“It would benefit you, as well”</td>
+</tr>
+<tr class="odd">
 <td align="center">Subjectivity</td>
 <td align="center">Yes</td>
-<td align="center">“I think”,“I believe”,“my view”</td>
+<td align="center">Identifying personal perspective</td>
 <td align="center">“I think that is fair”</td>
+</tr>
+<tr class="even">
+<td align="center">Swearing</td>
+<td align="center">No</td>
+<td align="center">Vulgarity of all sorts</td>
+<td align="center">“The dang price is too high”</td>
+</tr>
+<tr class="odd">
+<td align="center">Truth Intensifier</td>
+<td align="center">Both</td>
+<td align="center">Indicators of certainty</td>
+<td align="center">“This is definitely a good idea.”</td>
+</tr>
+<tr class="even">
+<td align="center">WH Questions</td>
+<td align="center">Yes</td>
+<td align="center">Questions w/ WH words (how, why, etc)</td>
+<td align="center">“Why did you settle on that value?”</td>
+</tr>
+<tr class="odd">
+<td align="center">YesNo Questions</td>
+<td align="center">Yes</td>
+<td align="center">Questions w/o WH words</td>
+<td align="center">“Is this for real?”</td>
 </tr>
 </tbody>
 </table>
@@ -469,7 +435,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="detecting-politeness-features" class="section level2">
 <h2>Detecting politeness features</h2>
-<p>The function <code>politeness()</code> takes in an <em>n</em>-length vector of texts, and returns an <em>n</em>-by-<em>f</em> data.frame, with <em>f</em> columns corresponding to the number of calculated features. There are 37 features in total, but some user options affect the number of features that are returned. For one, if a dependency parser is not used (by setting <code>parser = &quot;none&quot;</code>) then some features that depend on these tags will not be calculated. Additionally, you may use the setting <code>drop_blank = TRUE</code> which will remove features that were not detected in any of the texts.</p>
+<p>The function <code>politeness()</code> takes in an <em>n</em>-length vector of texts, and returns an <em>n</em>-by-<em>f</em> data.frame, with <em>f</em> columns corresponding to the number of calculated features. Some user options affect the number of features that are returned. For one, if a dependency parser is not used (by setting <code>parser = &quot;none&quot;</code>) then some features that depend on these tags will not be calculated. Additionally, you may use the setting <code>drop_blank = TRUE</code> which will remove features that were not detected in any of the texts.</p>
 <p>The cells are calculated in one of three ways. Setting <code>metric = &quot;count&quot;</code> will populate each cell with the raw count of each feature in the text. Alternatively, <code>metric = &quot;binary&quot;</code> will return a binary indicator of the presence or absence of features. For many features these are essentially equivalent, since they are typically present only once, or not at all (e.g. “hello”, “goodbye”). However, other features can be used many times in a single communication (e.g. positive words). An additional concern researchers may have is if their documents have a lot of variance on length - in that case, controlling for length with <code>metric = &quot;average&quot;</code> will generate the presence of each feature as a percentage of the total words in each document. We do not recommend this option as a default because length is often intrinsically correlated with politeness (e.g. “being short” with someone is synonymous with rudeness) so this may ony be desirable when the variance in length is large, and confounded by other factors besides politeness (e.g. a dataset with news )</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_politeness_count <span class="ot">&lt;-</span> <span class="fu">politeness</span>(phone_offers<span class="sc">$</span>message, <span class="at">metric=</span><span class="st">&quot;count&quot;</span>)</span></code></pre></div>
 <pre><code>Note: Some features cannot be computed without part-of-speech tagging. See ?spacyr::spacyr for details.</code></pre>
@@ -529,9 +495,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                              df_polite_holdout)</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(project<span class="sc">$</span>test_proj[bowl_offers<span class="sc">$</span>condition<span class="sc">==</span><span class="dv">1</span>])</span></code></pre></div>
-<pre><code>[1] 0.5752799</code></pre>
+<pre><code>[1] 0.5775915</code></pre>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(project<span class="sc">$</span>test_proj[bowl_offers<span class="sc">$</span>condition<span class="sc">==</span><span class="dv">0</span>])</span></code></pre></div>
-<pre><code>[1] 0.2225454</code></pre>
+<pre><code>[1] 0.2181824</code></pre>
 </div>
 <div id="reading-texts-that-are-high-or-low-in-politeness" class="section level2">
 <h2>Reading texts that are high or low in politeness</h2>

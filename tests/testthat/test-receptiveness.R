@@ -1,4 +1,6 @@
 #
+# Note - doesn't run on CRAN check server
+#
 # data("phone_offers")
 # phone_offers <- phone_offers[1:10,]
 #
@@ -41,4 +43,4 @@
 #
 #
 #
-#
+
