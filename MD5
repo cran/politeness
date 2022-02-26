@@ -1,4 +1,4 @@
-b9ab41aaf3822a310952475d25e882ed *DESCRIPTION
+fea08dd55e16c1bc34cbf69e4cb3a3a1 *DESCRIPTION
 ee098be2a03dc96c628037d6ffb3d8e8 *LICENSE
 57d825ee8f232276f94bf88cde43767d *NAMESPACE
 a02520f4d53bb6323c097092e1164923 *R/data.R
@@ -6,15 +6,15 @@ a02520f4d53bb6323c097092e1164923 *R/data.R
 fd05452fc6f2104f683c616d9c3c88ab *R/findPoliteTexts.R
 f5377629609cc98d3bfe3f15631ea841 *R/getTokenSets.R
 2e379b2efc6aa439df7a804a941ffe8b *R/math.R
-09e1538486ca9f64cc270c342532e6f3 *R/politeness.R
-a8a7f7faf5c797a289a31d529056e62e *R/politenessPlot.R
+8c599de5eea407121d93ebdbf27cd4d0 *R/politeness.R
+3083bea99f4462b36fc9d7d7629eadfc *R/politenessPlot.R
 4498a1f53fda81e975b941d805599a18 *R/politenessProjection.R
-c6e3706fed1fd7d520f60f2b3d7e4b71 *R/posTools.R
+0e5e5849eb0b77e1a34d66dda2ce0b2f *R/posTools.R
 6f846e5984ae52cd06ac7bf9086a47e4 *R/receptiveness.R
 1e7d29d22c4a324f7e4fd0e8d98e72ab *R/sysdata.rda
 7be66b2fa8e5a9b64ee775622c7feecb *R/textTools.R
 d8e17bc8f14c0ffa97ede4adb0035d71 *R/zzz.R
-600bf36abe3da2f3483e1e88d4d13137 *README.md
+025604686f7cc9be7f2eda88a4492597 *README.md
 438456e355b6781b5d83decdc132887e *build/vignette.rds
 f0c0623e8c0fa0592a7fc693f5956136 *data/bowl_offers.rdata
 3c5152597202ab2b2e99185548840026 *data/feature_table.rdata
@@ -24,7 +24,7 @@ ea590c1a48418e47a6b5059ef2ee629a *data/receptive_polite.rdata
 62a936f0dff0a21718d9e78326e3d89a *data/uk2us.rda
 1f38356eb4fe94a18eb54d6c95704df8 *inst/doc/politeness.R
 6d0b3881789a8f2077ebab959b8d628e *inst/doc/politeness.Rmd
-05e949803789a2b358b4ad901a306488 *inst/doc/politeness.html
+f7ccb28878ae8a6fd13bb0177c32d1ed *inst/doc/politeness.html
 3ae218fedafda17ab61933113b872839 *man/bowl_offers.Rd
 f46c2795dbb282fc6c942bf276ab4724 *man/cleanpunct.Rd
 89bb25acd5933c41ba2418bada4fde0d *man/cleantext.Rd
@@ -38,7 +38,7 @@ aa8711de4c34d7522b12d5dc681eb326 *man/hedge_list.Rd
 8acb2a451149733da53e32201df0b378 *man/negative_list.Rd
 03d86d5dbef2dc23dd3059bc989e7d60 *man/phone_offers.Rd
 b3d6816844c8add79b384e97af1580f5 *man/polite_dicts.Rd
-100f99adb1cb54a850030ecb9ab6177d *man/politeness.Rd
+d669024a2ccb5ff78cedb01f86ddbc56 *man/politeness.Rd
 21f8c084e3b4a03da25e006dba616c87 *man/politenessPlot.Rd
 d5be612e1868a701958d04d4840e3b1c *man/politenessProjection.Rd
 38326adf032f3aafb7a39b11c1fd9054 *man/positive_list.Rd
