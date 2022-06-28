@@ -1,4 +1,4 @@
-fea08dd55e16c1bc34cbf69e4cb3a3a1 *DESCRIPTION
+4f634c851837aec91fa30afcdd677071 *DESCRIPTION
 ee098be2a03dc96c628037d6ffb3d8e8 *LICENSE
 57d825ee8f232276f94bf88cde43767d *NAMESPACE
 a02520f4d53bb6323c097092e1164923 *R/data.R
@@ -12,7 +12,7 @@ f5377629609cc98d3bfe3f15631ea841 *R/getTokenSets.R
 0e5e5849eb0b77e1a34d66dda2ce0b2f *R/posTools.R
 6f846e5984ae52cd06ac7bf9086a47e4 *R/receptiveness.R
 1e7d29d22c4a324f7e4fd0e8d98e72ab *R/sysdata.rda
-7be66b2fa8e5a9b64ee775622c7feecb *R/textTools.R
+7b01dce0aa8d6cf4873e929a8cfd9c6e *R/textTools.R
 d8e17bc8f14c0ffa97ede4adb0035d71 *R/zzz.R
 025604686f7cc9be7f2eda88a4492597 *README.md
 438456e355b6781b5d83decdc132887e *build/vignette.rds
@@ -24,7 +24,7 @@ ea590c1a48418e47a6b5059ef2ee629a *data/receptive_polite.rdata
 62a936f0dff0a21718d9e78326e3d89a *data/uk2us.rda
 1f38356eb4fe94a18eb54d6c95704df8 *inst/doc/politeness.R
 6d0b3881789a8f2077ebab959b8d628e *inst/doc/politeness.Rmd
-f7ccb28878ae8a6fd13bb0177c32d1ed *inst/doc/politeness.html
+aed5e9cdd816ab4886cc47978721df1d *inst/doc/politeness.html
 3ae218fedafda17ab61933113b872839 *man/bowl_offers.Rd
 f46c2795dbb282fc6c942bf276ab4724 *man/cleanpunct.Rd
 89bb25acd5933c41ba2418bada4fde0d *man/cleantext.Rd
