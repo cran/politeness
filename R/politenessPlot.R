@@ -1,3 +1,5 @@
+# Used to avoid incorrect notes of "no visible binding"
+utils::globalVariables(c("feature","count","cond"))
 
 #' Politeness plot
 #'
@@ -106,6 +108,10 @@ politenessPlot<-function(df_polite,
   }
 
   binary <- setequal(unique(unlist(df_polite)),0:1)
+  averages <- 1*(mean(df_polite==round(df_polite))!=1)
+  if(averages==1){
+    df_polite<-df_polite*100
+  }
 
   num_features <- ncol(df_polite)
   l_polite_split <- split(data.frame(df_polite), split)
@@ -128,6 +134,7 @@ politenessPlot<-function(df_polite,
   ######################################################
   nonblanks <- colnames(df_polite)[colMeans(df_polite)>=drop_blank]
 
+
   split.enough<-names(df_polite)
   if(middle_out<1){
     split.p<-unlist(lapply(names(df_polite), function(x) stats::t.test(l_polite_split[[1]][,x],
@@ -146,11 +153,15 @@ politenessPlot<-function(df_polite,
     y.breaks <- seq(0,1,.25)
     y.labels <- paste0(seq(0,100,25),"%")
     y.trans <- "identity"
+  } else if(averages){
+    map.type<-"Feature Count per 100 Words"
+    tick.set<-c(0.1,0.5,1,2,5,10,25)
+    y.labels <- y.breaks <- tick.set
+    y.trans <- "sqrt"
   } else {
     map.type<-"Feature Count per Document"
     tick.set<-c(0.1,0.5,1,2,5,10,20,50,100,200,500,1000)
     y.labels <- y.breaks <- tick.set
-
     y.trans <- "sqrt"
   }
   ######################################################
@@ -183,7 +194,10 @@ politenessPlot<-function(df_polite,
   split.data$count_plus<-split.data$count+split.data$se*SEscaler
   ######################################################
   ggplot2::ggplot(data=split.data,
-                  ggplot2::aes_string(x="feature",y="count",fill="cond"),width=2) +
+                  ggplot2::aes(x=feature,
+                               y=count,
+                               fill=cond),
+                  width=2) +
     ggplot2::geom_bar(position=ggplot2::position_dodge(width = 0.8),
                       stat="identity") +
     ggplot2::geom_errorbar(ggplot2::aes_string(ymin="count_minus", ymax="count_plus"), width=0.3,
