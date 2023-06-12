@@ -5,13 +5,19 @@
 #' @param texts character vector of to-be-searched text.
 #' @param words logical. Default FALSE. Does \code{counted} contain words, or sequences of chracters?
 #' @param fixed logical. Default TRUE. Use literal characters instead of regular expressions?
+#' @param start logical. Default FALSE. Does \code{counted} only look at the start of a sentence?
 #' @param num_mc_cores integer Number of cores for parallelization. Default is parallel::detectCores().
 #' @return numeric vector as long as \code{texts} indicating total frequencies of \code{counted} items.
 #' @keywords internal
 #'
-textcounter<-function (counted, texts, words=FALSE, fixed = TRUE, num_mc_cores = parallel::detectCores()) {
+textcounter<-function (counted, texts, words=FALSE, fixed = TRUE, start=FALSE,
+                       num_mc_cores = parallel::detectCores()) {
+
 
   if(words){
+    if(start){
+      texts=unlist(parallel::mclapply(texts,function(x) x[1], mc.cores=num_mc_cores))
+    }
     counts<-unlist(parallel::mclapply(texts,function(x) sum(unlist(x)%in%counted), mc.cores=num_mc_cores))
   }else {
     counts <- rep(0, length(texts))
@@ -33,9 +39,6 @@ textcounter<-function (counted, texts, words=FALSE, fixed = TRUE, num_mc_cores =
 #' @keywords internal
 cleantext<-function (text, language = "english", stop.words = TRUE) {
   text <- tolower(text)
-  if (language == "english") {
-    text <- ctxpand(text)
-  }
   text <- gsub("[[:punct:]]", " ", text)
   text <- gsub("[[:cntrl:]]", " ", text)
   if (length(stop.words) > 1) {
@@ -56,6 +59,7 @@ cleantext<-function (text, language = "english", stop.words = TRUE) {
 #' @return a character vector
 #' @keywords internal
 ctxpand<-function(text){
+  text=tolower(text)
   text<-sapply(text, function(x) gsub("let's", "let us", x, fixed=TRUE))
   text<-sapply(text, function(x) gsub("i'm", "i am", x, fixed=TRUE))
   text<-sapply(text, function(x) gsub("won't", "will not", x, fixed=TRUE))
@@ -71,6 +75,7 @@ ctxpand<-function(text){
   text<-sapply(text, function(x) gsub("u.s.", "usa", x, fixed=TRUE))
   text<-sapply(text, function(x) gsub("e.g.", "eg", x, fixed=TRUE))
   text<-sapply(text, function(x) gsub("i.e.", "ie", x, fixed=TRUE))
+  names(text)<-NULL
   return(text)
 }
 
