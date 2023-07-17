@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 
-<meta name="date" content="2023-06-12" />
+<meta name="date" content="2023-07-17" />
 
 <title>Politeness</title>
 
@@ -339,7 +339,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Politeness</h1>
 <h3 class="subtitle">Detecting Politeness Features in Text</h3>
-<h4 class="date">2023-06-12</h4>
+<h4 class="date">2023-07-17</h4>
 
 
 
@@ -856,9 +856,9 @@ politeness.</p>
 <span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>                              df_polite_holdout)</span>
 <span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a></span>
 <span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a><span class="fu">mean</span>(project<span class="sc">$</span>test_proj[bowl_offers<span class="sc">$</span>condition<span class="sc">==</span><span class="dv">1</span>])</span></code></pre></div>
-<pre><code>[1] 0.5666499</code></pre>
+<pre><code>[1] 0.5571849</code></pre>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">mean</span>(project<span class="sc">$</span>test_proj[bowl_offers<span class="sc">$</span>condition<span class="sc">==</span><span class="dv">0</span>])</span></code></pre></div>
-<pre><code>[1] 0.2402088</code></pre>
+<pre><code>[1] 0.2626271</code></pre>
 </div>
 <div id="reading-texts-that-are-high-or-low-in-politeness" class="section level2">
 <h2>Reading texts that are high or low in politeness</h2>
@@ -883,16 +883,16 @@ texts that are returned.</p>
 <span id="cb20-8"><a href="#cb20-8" tabindex="-1"></a>                     <span class="at">type=</span><span class="st">&quot;least&quot;</span>)</span></code></pre></div>
 <pre><code>[1] &quot;Most Polite&quot;</code></pre>
 <pre><code>[1] &quot;Hello,   Oh my goodness, I&#39;m so excited to see your listing. The phone is EXACTLY what I have been searching for! And I can tell from your description and the photo that it&#39;s just perfect, too. I can almost hear it ringing in my pocket right now! What&#39;s that? Hello? So, happy to hear from you. Sorry, sorry. I&#39;m getting ahead of myself. Soooo, I was wondering if there was any way that you might consider taking a little bit less for this phone? It&#39;s absolutely everything I&#39;ve been looking for but my bosses &amp;lt;grrrrr!!!&amp;gt; will only give us $115 to get this phone. I know! Can you believe it? Is there any way you could absolutely make my day and say \&quot;\&quot;yes\&quot;\&quot; to $115? I&#39;d be so, so grateful. Just let me know when you can. Thanks so much. :) &quot;
-[1] &quot;Hi, I hope your day is going well. I am very pleased to see the phone you are offering for sale, as it is exactly what I need! I am on a very tight budget so I hope that you will be willing for accept $115 for the phone. It is the most I can pay. Please know that I would be so happy if I am able to buy this phone. I&#39;m sorry that I can&#39;t offer more. If you are willing to accept my offer, perhaps I can do you a small favor as well, like mow your lawn or something. In any case if you accept my offer you would have my sincere and heartfelt gratitude.   Whether you accept my offer or not, I hope that this message finds you and yours well and happy. I hope you have a great day. :)&quot;
 [1] &quot;Hello,  I am glad your selling this phone. Is it still available? I would love to purchase it. Would you consider $115 for it? I can buy it today if that price works. Thank you.&quot;
+[1] &quot;Hi, I hope your day is going well. I am very pleased to see the phone you are offering for sale, as it is exactly what I need! I am on a very tight budget so I hope that you will be willing for accept $115 for the phone. It is the most I can pay. Please know that I would be so happy if I am able to buy this phone. I&#39;m sorry that I can&#39;t offer more. If you are willing to accept my offer, perhaps I can do you a small favor as well, like mow your lawn or something. In any case if you accept my offer you would have my sincere and heartfelt gratitude.   Whether you accept my offer or not, I hope that this message finds you and yours well and happy. I hope you have a great day. :)&quot;
 [1] &quot;Hey, is the phone still available? If so, are you willing to take $115 for it? I am available for pick up as soon as the next hour if you agree to the price. I really need this for work, any deal you can make would be greatly appreciated. &quot;
 [1] &quot;Hello.  I&#39;m very interested in your phone.  Is it still available?  I have $115 to offer, would you be willing to accept that offer?  I&#39;m shopping for a work phone and I&#39;ve only been given a budget of $115 to spend.  Hopefully you will consider my offer.  Thank you. &quot;</code></pre>
 <pre><code>[1] &quot;Least Polite&quot;</code></pre>
 <pre><code>[1] &quot;Come on. The price you are offering on a product that ISN&#39;T NEW is unreasonable. Now, I for one am very interested in getting this item. BUT, I will only pay $115. I am not paying a penny more. &quot;
 [1] &quot;I am inquiring about your Iphone 6 plus that you had posted.  I am wanting to buy and I have cash in hand.  The max amount I can offer is $115.  No more, no less.  Let me know. &quot;
 [1] &quot;I will buy the phone as is for $115. I don&#39;t want to pay more than the amount that I stated. If you accept my price please contact me within 24 hours. If I don&#39;t hear from you in the next 24 hours I will take it that you will accept my price.&quot;
-[1] &quot;I am interested in your phone but at the price of exactly $115, and not a penny more, as it is used and I am not convinced it will work with my network. It is used and it may or may not work.&quot;
-[1] &quot;This is the phone I am looking around for. I am currently without a phone and I need this IPhone. You seem you can&#39;t get a deal for your initial offer and I know you want to get rid of it so, I want to relieve you and offer you 115 dollars.&quot;</code></pre>
+[1] &quot;This is the phone I am looking around for. I am currently without a phone and I need this IPhone. You seem you can&#39;t get a deal for your initial offer and I know you want to get rid of it so, I want to relieve you and offer you 115 dollars.&quot;
+[1] &quot;I am interested in your phone but at the price of exactly $115, and not a penny more, as it is used and I am not convinced it will work with my network. It is used and it may or may not work.&quot;</code></pre>
 </div>
 <div id="execution-time" class="section level2">
 <h2>Execution time</h2>

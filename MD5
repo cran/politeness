@@ -1,4 +1,4 @@
-035955562fa969bb7ef2ba2926ce268f *DESCRIPTION
+f5956fb0a98e82139b801ddc9af5c308 *DESCRIPTION
 ee098be2a03dc96c628037d6ffb3d8e8 *LICENSE
 02b18e9368b182da60e62b85e29ef6df *NAMESPACE
 70a81d93f8ae3bc410eb96da00f539f3 *R/data.R
@@ -22,12 +22,12 @@ f0c0623e8c0fa0592a7fc693f5956136 *data/bowl_offers.rdata
 3c5152597202ab2b2e99185548840026 *data/feature_table.rdata
 520722103e2f58af7b6be1200ceb9d24 *data/phone_offers.rdata
 8db49cd91cc960e63de9c91b7d8db03f *data/polite_train.rdata
-ea590c1a48418e47a6b5059ef2ee629a *data/receptive_polite.rdata
+0bcb27543e9efd9480cc7a3978420d4c *data/receptive_polite.rdata
 81e7c6632c36976e2e882d3b9aa76601 *data/receptive_train.rdata
 62a936f0dff0a21718d9e78326e3d89a *data/uk2us.rda
 1f38356eb4fe94a18eb54d6c95704df8 *inst/doc/politeness.R
 6d0b3881789a8f2077ebab959b8d628e *inst/doc/politeness.Rmd
-fbacced5c8b9138b15456710ad9da836 *inst/doc/politeness.html
+3b9a3112ec7c5675a742695b90bf3d80 *inst/doc/politeness.html
 3ae218fedafda17ab61933113b872839 *man/bowl_offers.Rd
 f46c2795dbb282fc6c942bf276ab4724 *man/cleanpunct.Rd
 89bb25acd5933c41ba2418bada4fde0d *man/cleantext.Rd
