@@ -6,12 +6,12 @@
 #' @param words logical. Default FALSE. Does \code{counted} contain words, or sequences of chracters?
 #' @param fixed logical. Default TRUE. Use literal characters instead of regular expressions?
 #' @param start logical. Default FALSE. Does \code{counted} only look at the start of a sentence?
-#' @param num_mc_cores integer Number of cores for parallelization. Default is parallel::detectCores().
+#' @param num_mc_cores integer Number of cores for parallelization. Default is 1.
 #' @return numeric vector as long as \code{texts} indicating total frequencies of \code{counted} items.
 #' @keywords internal
 #'
 textcounter<-function (counted, texts, words=FALSE, fixed = TRUE, start=FALSE,
-                       num_mc_cores = parallel::detectCores()) {
+                       num_mc_cores = 1) {
 
 
   if(words){
@@ -99,7 +99,6 @@ usWords<-function(text){
 #' @return character Vector of clean strings.
 #' @keywords internal
 cleanpunct<-function(text){
-  text=unlist(lapply(text, noLeadDash))
   # text<-gsub("‘", "'",text)
   # text<-gsub("’", "'", text)
   # text<-gsub("“", '"', text)
@@ -111,6 +110,7 @@ cleanpunct<-function(text){
   text<-gsub("[\u201C\u201D\u201E\u201F\u2033\u2036]", '"', text)
   text<-gsub("[\u2018\u2019\u201A\u201B\u2032\u2035]", "'", text)
   text<-stringi::stri_trans_general(text, "latin-ascii")
+  text=unlist(lapply(text, noLeadDash))
   return(text)
 }
 
