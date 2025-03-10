@@ -14,6 +14,7 @@ getTokenSets<-function(text,parser=c("none","spacy"),num_mc_cores=1){
   text=ctxpand(text)
   sets<-list()
   sets[["dicts"]]<-dictWrap(text, dict=polite_dicts, num_mc_cores=num_mc_cores)
+
   sets[["clean"]]<-parallel::mclapply(text, cleantext, stop.words=FALSE,mc.cores=num_mc_cores)
   sets[["c.words"]]<-parallel::mclapply(sets[["clean"]], function(x) strsplit(x, split=" ")[[1]],mc.cores=num_mc_cores)
   sets[["c.words"]]<-parallel::mclapply(sets[["c.words"]],function(x) x[x!=""],mc.cores=num_mc_cores)
@@ -31,7 +32,7 @@ getTokenSets<-function(text,parser=c("none","spacy"),num_mc_cores=1){
     sets[["p.nonum"]]<-parallel::mclapply(s.p$p.nonums,tolower,mc.cores=num_mc_cores)
     sets[["pos.nums"]]<-parallel::mclapply(s.p$pos.nums,tolower,mc.cores=num_mc_cores)
     sets[["w.nums"]]<-parallel::mclapply(s.p$w.nums,tolower,mc.cores=num_mc_cores)
-    sets[["ques.pos.dists"]]<-parallel::mclapply(s.p$ques.pos.dists,tolower,mc.cores=num_mc_cores)
+    sets[["ques.pre.root"]]<-parallel::mclapply(s.p$ques.pre.root,tolower,mc.cores=num_mc_cores)
     sets[["unneg.words"]]<-parallel::mclapply(s.p$unneg.words,tolower,mc.cores=num_mc_cores)
     sets[["neg.words"]]<-parallel::mclapply(s.p$neg.words,tolower,mc.cores=num_mc_cores)
     sets[["p.negs"]]<-parallel::mclapply(s.p$p.negs,tolower,mc.cores=num_mc_cores)

@@ -111,6 +111,8 @@ politeness<-function(text, parser=c("none","spacy"),
   features[["Informal.Title"]]<-sets[["dicts"]][,"InformalTitle"]
   features[["Formal.Title"]]<-sets[["dicts"]][,"FormalTitle"]
 
+  # Titles - "boss" vs "my boss", "son" vs "our son"
+
   features[["Could.You"]]<-textcounter(c("could you","would you","might you"),sets[["clean"]], num_mc_cores=num_mc_cores)
   features[["Can.You"]]<-textcounter(c("can you","will you"),sets[["clean"]], num_mc_cores=num_mc_cores)
 
@@ -137,7 +139,7 @@ politeness<-function(text, parser=c("none","spacy"),
   features[["Give.Agency"]]<-textcounter(c("let you", "allow you", "you can ", " you may ", " you could "),sets[["clean"]],
                                          num_mc_cores=num_mc_cores)
 
-  features[["Hello"]]<-(textcounter(c("hi","hello","hey","greetings"),sets[["c.words"]],words=TRUE,
+  features[["Hello"]]<-(textcounter(c("hi","hello","hey","greetings","howdy"),sets[["c.words"]],words=TRUE,
                                     num_mc_cores=num_mc_cores)+
                           textcounter(c("good morning", "good evening", "good afternoon"),sets[["clean"]],
                                       num_mc_cores=num_mc_cores))
@@ -158,18 +160,16 @@ politeness<-function(text, parser=c("none","spacy"),
                                             "she","her","hers","herself",
                                             "they","them","their","theirs","themselves"),
                                           sets[["c.words"]],words=TRUE,
-                                           num_mc_cores=num_mc_cores)
-
-
-  #
-
+                                          num_mc_cores=num_mc_cores)
+  features[["Questions"]]<-textcounter("?",text, num_mc_cores=num_mc_cores)
 
   #if(parser[1]=="none"){
   if(parser[1]!="spacy"){
-    cat("Warning: Please install and initialize SpaCy, using the spacyr R package. This is an INCOMPLETE version of the package.")
+    if(length(parser)==2){
+      cat("Warning: Please install and initialize SpaCy, using the spacyr R package. This is an INCOMPLETE version of the package.")
+    }
     features[["Positive.Emotion"]]<-textcounter(positive_list,sets[["c.words"]],words=TRUE, num_mc_cores=num_mc_cores)
     features[["Negative.Emotion"]]<-textcounter(negative_list,sets[["c.words"]],words=TRUE, num_mc_cores=num_mc_cores)
-    features[["Questions"]]<-textcounter("?",text, num_mc_cores=num_mc_cores)
     features[["Gratitude"]]<-(unlist(lapply(sets[["c.words"]], function(x) sum(startsWith(unlist(x), prefix="thank"))))+
                                 unlist(lapply(sets[["c.words"]], function(x) sum(startsWith(unlist(x), prefix="grateful"))))+
                                 unlist(lapply(sets[["c.words"]], function(x) sum(startsWith(unlist(x), prefix="gratitude")))))
@@ -196,6 +196,7 @@ politeness<-function(text, parser=c("none","spacy"),
                                 textcounter(apply(expand.grid(c("good","great","excellent","brilliant","fair","amazing"),
                                                               c("idea", "point","suggestion")),1,paste, collapse=" "),
                                             sets[["clean"]],num_mc_cores=num_mc_cores))
+
     features[["Disagreement"]]<-(unlist(lapply(sets[["p.negs"]],
                                                function(x) sum(textcounter(c("nsubj(agree, i)","nsubj(concur, i)",
                                                                              "nsubj(agree, we)","nsubj(concur, we)",
@@ -254,20 +255,34 @@ politeness<-function(text, parser=c("none","spacy"),
                                                                                  &(!grepl(paste0("-hang-"),unlist(x)))
                                                                                  &(!grepl(paste0("-let-"),unlist(x)))
     )))
+    # what about when the first word is a negation, e.g. "don't go there"
 
-    q.words<-c("who","what","where","when","why","how","which")
-    features[["WH.Questions"]]<-unlist(lapply(sets[["ques.pos.dists"]],
-                                              function(x) sum(textcounter(c(paste0(q.words,"-wrb"),paste0(q.words,"-wdt"),paste0(q.words,"-wp")),x))))
-    # features[["WH.QuestionsX"]]<-unlist(lapply(sets[["ques.pos.dists"]],
-    #                                           function(x) sum(textcounter(c("wrb)-0","wdt)-0","-wp)-0","wrb)-1","wdt)-1","-wp)-1"),x))))
-    # maybe look for all words before the root? except...
-    # "At what point do you say enough is enough?"
-    # "Given what has happened, do you feel that the actions in response to this were always appropriate?"
-    features[["YesNo.Questions"]]<-unlist(lapply(sets[["ques.pos.dists"]],
-                                                 function(x) sum(textcounter("-?-",x,num_mc_cores=num_mc_cores))))-features[["WH.Questions"]]
-    # Also....
-    # Tag Questions cases like "right?" and "don't you?", "eh?", "you know?" "what do you think?"
-    # Repair Questions	(from SpeedDate)? "pardon?" "sorry?"
+    ######### QUESTION TYPES #########
+    q.words<-c("who","what","where","when","why","how","which") # now in spacyParser
+    features[["WH.Questions"]]<-(unlist(lapply(sets[["ques.pre.root"]],
+                                               function(x) sum(textcounter(q.words,x))))
+    )
+    features[["Repair.Questions"]]<-textcounter(c("punct(who, ?)","punct(what, ?)","punct(pardon, ?)","punct(sorry, ?)",
+                                                  "punct(huh, ?)","punct(hm, ?)"),
+                                                sets[["p.nonum"]], words=TRUE,
+                                                num_mc_cores=num_mc_cores)
+    #   Original list "What?","Sorry?","Excuse me?","Huh?","Who?","Pardon?","Say again?","Say it again?","What's that?","What is that?") # "what did you say?"
+
+    features[["Tag.Questions"]]<-unlist(lapply(text,
+                                               function(x) sum(textcounter(c("right?","you know?","eh?",
+                                                                             # "what do you think?",
+                                                                             "do you?","don't you?"),x,
+                                                                           num_mc_cores=num_mc_cores))))
+
+    # false positive WH: "Given what has happened, do you know enough to decide?"
+    features[["YesNo.Questions"]]<-(features[["Questions"]]
+                                    -features[["WH.Questions"]]
+                                    -features[["Repair.Questions"]]
+                                    -features[["Tag.Questions"]]
+    )
+    features[["Questions"]]<-NULL
+    #########################################
+
     features[["Gratitude"]]<-(unlist(lapply(sets[["c.words"]], function(x) sum(startsWith(unlist(x), prefix="thank"))))+
                                 unlist(lapply(sets[["c.words"]], function(x) sum(startsWith(unlist(x), prefix="grateful"))))+
                                 unlist(lapply(sets[["c.words"]], function(x) sum(startsWith(unlist(x), prefix="gratitude"))))+
@@ -284,11 +299,13 @@ politeness<-function(text, parser=c("none","spacy"),
                                            "poss(forgiveness, your)",
                                            "dobj(forgive, me)"),sets[["p.unnegs"]], words=TRUE,
                                          num_mc_cores=num_mc_cores)
-                            +min(sum(textcounter("nsubj(are, we)",sets[["p.unnegs"]],words=TRUE)),
-                                 sum(textcounter("acomp(are, sorry)",sets[["p.unnegs"]],words=TRUE)))
-                            +min(sum(textcounter("nsubj('re, we)",sets[["p.unnegs"]],words=TRUE)),
-                                 sum(textcounter("acomp('re, sorry)",sets[["p.unnegs"]],words=TRUE)))
-                            # "I would like to apologize" - "I want to apologize" - "would you like to apologize"
+                            +(textcounter("nsubj(are, we)",sets[["p.unnegs"]],words=TRUE)&textcounter("acomp(are, sorry)",sets[["p.unnegs"]],words=TRUE))
+                            +(textcounter("nsubj('re, we)",sets[["p.unnegs"]],words=TRUE)&textcounter("acomp('re, sorry)",sets[["p.unnegs"]],words=TRUE))
+                            +(textcounter("xcomp(want, apologize)",sets[["self.unnegs"]]))
+                            +(textcounter("xcomp(have, apologize)",sets[["self.unnegs"]]))
+                            +(textcounter("xcomp(need, apologize)",sets[["self.unnegs"]]))
+                            +(textcounter("xcomp(like, apologize)",sets[["self.unnegs"]]))
+                            +(textcounter("intj(say, sorry)",sets[["self.unnegs"]]))
 
     )
     features[["Truth.Intensifier"]]<-(textcounter(c("really", "actually", "honestly", "surely"),sets[["c.words"]],words=TRUE,
